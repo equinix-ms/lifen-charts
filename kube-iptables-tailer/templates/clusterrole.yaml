@@ -15,4 +15,10 @@ rules:
 - apiGroups: [""]
   resources: ["events"]
   verbs:     ["patch","create"]
+- apiGroups: ["policy"]
+  resources: ["podsecuritypolicies"]
+  verbs:     ["use"]
+  resourceNames:
+  - {{ include "kube-iptables-tailer.fullname" . }}
+{{- end }}
 {{- end -}}
